@@ -13,7 +13,7 @@ namespace DodongosQuest.Screens.Gameplay
     public class MessageBox
     {
         private List<Message> _messages;
-        //private SpriteFont _font;
+        private SpriteFont _font;
         private List<Vector2> _messageLocations;
         private Texture2D _backgroundImage;
         private Vector2 _position;
@@ -25,6 +25,7 @@ namespace DodongosQuest.Screens.Gameplay
         {
             _messages = new List<Message>();
             //_font = ContentHelper.Content.Load<SpriteFont>("MessageBoxFont");
+            _font = ContentHelper.Content.Load<SpriteFont>("arial");
             _backgroundImage = ContentHelper.Content.Load<Texture2D>("MessageBoxBackground");
             _messageLocations = new List<Vector2>();
             _messageLocations.Add(new Vector2(position.X + 10, position.Y + 120));
@@ -58,7 +59,7 @@ namespace DodongosQuest.Screens.Gameplay
                 if (_messages.Count > messageIndex + _viewingIndex)
                 {
                     Message currentMessage = _messages[messageIndex + _viewingIndex];
-                    //GraphicsHelper.spriteBatch.DrawString(_font, currentMessage.MessageText, position, GetMessageTypeColor(currentMessage.MessageType));
+                    GraphicsHelper.spriteBatch.DrawString(_font, currentMessage.MessageText, position, GetMessageTypeColor(currentMessage.MessageType));
                 }
                 messageIndex += 1;
             }            

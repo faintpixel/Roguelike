@@ -14,7 +14,7 @@ namespace DodongosQuest.Screens.Gameplay
         private Texture2D _backgroundImage;
         private Vector2 _position;
         private PlayerCharacter _player;
-        //private SpriteFont _font;
+        private SpriteFont _font;
         private Vector2 _playerHitPointsPosition;
         private Vector2 _playerManaPosition;
         private int _width;
@@ -26,6 +26,7 @@ namespace DodongosQuest.Screens.Gameplay
             _backgroundImage = ContentHelper.Content.Load<Texture2D>("SideBarBackground");
             _player = player;
             //_font = ContentHelper.Content.Load<SpriteFont>("MessageBoxFont");
+            _font = ContentHelper.Content.Load<SpriteFont>("arial");
             _playerHitPointsPosition = new Vector2(position.X + 3, position.Y + 3);
             _playerManaPosition = new Vector2(position.X + 3, position.Y + 23);
             _width = _backgroundImage.Width;
@@ -35,8 +36,8 @@ namespace DodongosQuest.Screens.Gameplay
         public void Draw(GameTime gameTime)
         {
             GraphicsHelper.spriteBatch.Draw(_backgroundImage, _position, null, Color.White, 0f, new Vector2(0, 0), 1f, SpriteEffects.None, 0.3f);
-            //GraphicsHelper.spriteBatch.DrawString(_font, "HP: " + _player.Health.Current + "/" + _player.Health.Maximum, _playerHitPointsPosition, Color.White);
-            //GraphicsHelper.spriteBatch.DrawString(_font, "M: " + _player.Mana.Current + "/" + _player.Mana.Maximum, _playerManaPosition, Color.White);
+            GraphicsHelper.spriteBatch.DrawString(_font, "HP: " + _player.Health.Current + "/" + _player.Health.Maximum, _playerHitPointsPosition, Color.White);
+            GraphicsHelper.spriteBatch.DrawString(_font, "M: " + _player.Mana.Current + "/" + _player.Mana.Maximum, _playerManaPosition, Color.White);
         }
 
         public void Update(GameTime gameTime)
