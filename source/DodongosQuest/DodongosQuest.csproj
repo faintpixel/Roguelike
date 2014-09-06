@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A2B83D2D-EE46-40BA-A1B4-B56948A6C3A8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DodongosQuest</RootNamespace>
+    <AssemblyName>DodongosQuest</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Achievements\AchievementNotifier.cs" />
+    <Compile Include="Announcements\Announcer.cs" />
+    <Compile Include="Announcements\Message.cs" />
+    <Compile Include="Announcements\MessageTypes.cs" />
+    <Compile Include="Containers\IContainer.cs" />
+    <Compile Include="Containers\TreasureChest.cs" />
+    <Compile Include="Controls.cs" />
+    <Compile Include="Creatures\Attack Strategies\IAttackStrategy.cs" />
+    <Compile Include="Creatures\Attack Strategies\ProjectileAttackStrategy.cs" />
+    <Compile Include="Creatures\Attack Strategies\StandardAttackStrategy.cs" />
+    <Compile Include="Creatures\Creature.cs" />
+    <Compile Include="Creatures\CreatureFactory.cs" />
+    <Compile Include="Creatures\Creatures.cs" />
+    <Compile Include="Creatures\Death Strategies\IDeathStrategy.cs" />
+    <Compile Include="Creatures\Death Strategies\StandardDeathStrategy.cs" />
+    <Compile Include="Creatures\Draw Strategies\FlyingCreatureDrawStrategy.cs" />
+    <Compile Include="Creatures\Draw Strategies\IDrawStrategy.cs" />
+    <Compile Include="Creatures\Draw Strategies\WalkingCreatureDrawStrategy.cs" />
+    <Compile Include="Creatures\Fire.cs" />
+    <Compile Include="Creatures\ICreature.cs" />
+    <Compile Include="Creatures\Player\PlayerCharacter.cs" />
+    <Compile Include="Creatures\Remains\IRemains.cs" />
+    <Compile Include="Creatures\Remains\Remains.cs" />
+    <Compile Include="Creatures\Remains\RemainsFactory.cs" />
+    <Compile Include="Creatures\Stat.cs" />
+    <Compile Include="Creatures\Temporary Effects\ITemporaryEffect.cs" />
+    <Compile Include="Creatures\Temporary Effects\MovementTypeTemporaryEffect.cs" />
+    <Compile Include="Creatures\Temporary Effects\ReducedVisionTemporaryEffect.cs" />
+    <Compile Include="Creatures\Turn Strategies\ITurnStrategy.cs" />
+    <Compile Include="Creatures\Turn Strategies\RandomTurnStrategy.cs" />
+    <Compile Include="Creatures\Turn Strategies\StationaryTurnStrategy.cs" />
+    <Compile Include="Creatures\Turn Strategies\WanderingSpellCasterTurnStrategy.cs" />
+    <Compile Include="Door.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Helpers\ContentHelper.cs" />
+    <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\Input\KeyboardHelper.cs" />
+    <Compile Include="Helpers\Input\MouseHelper.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
+    <Compile Include="Helpers\Primitives\Box.cs" />
+    <Compile Include="Helpers\Primitives\Circle.cs" />
+    <Compile Include="Helpers\Primitives\GeometryDrawer.cs" />
+    <Compile Include="Helpers\Primitives\Line.cs" />
+    <Compile Include="Helpers\Primitives\PrimitiveBatch.cs" />
+    <Compile Include="Items\Get Strategies\ApplyTemporaryEffectGetStrategy.cs" />
+    <Compile Include="Items\Get Strategies\IGetStrategy.cs" />
+    <Compile Include="Items\Get Strategies\StandardGetStrategy.cs" />
+    <Compile Include="Items\Give Strategies\IGiveStrategy.cs" />
+    <Compile Include="Items\Give Strategies\RemoveTemporaryEffectGiveStrategy.cs" />
+    <Compile Include="Items\Give Strategies\StandardGiveStrategy.cs" />
+    <Compile Include="Items\IItem.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemCategories.cs" />
+    <Compile Include="Items\ItemFactory.cs" />
+    <Compile Include="Items\ItemTypes.cs" />
+    <Compile Include="Items\Use Strategies\ApplyTemporaryEffect.cs" />
+    <Compile Include="Items\Use Strategies\DestroyUseStrategy.cs" />
+    <Compile Include="Items\Use Strategies\DoNothing.cs" />
+    <Compile Include="Items\Use Strategies\IUseStrategy.cs" />
+    <Compile Include="Items\Use Strategies\RestoreFixedAmountOfHealth.cs" />
+    <Compile Include="Items\Use Strategies\RestoreFixedAmountOfMana.cs" />
+    <Compile Include="Items\Use Strategies\StandardEquipWeaponStrategy.cs" />
+    <Compile Include="Magic\Cast Strategies\FireballStrategy.cs" />
+    <Compile Include="Magic\Cast Strategies\HealSelfStrategy.cs" />
+    <Compile Include="Magic\Cast Strategies\ICastStrategy.cs" />
+    <Compile Include="Magic\Cast Strategies\InfernoStrategy.cs" />
+    <Compile Include="Magic\Cast Strategies\TeleportStrategy.cs" />
+    <Compile Include="Magic\ISpell.cs" />
+    <Compile Include="Magic\Spell.cs" />
+    <Compile Include="Magic\SpellFactory.cs" />
+    <Compile Include="ParticleSystem\FireBallParticleSystem.cs" />
+    <Compile Include="ParticleSystem\HealParticleSystem.cs" />
+    <Compile Include="ParticleSystem\Particle.cs" />
+    <Compile Include="ParticleSystem\ParticleSystem.cs" />
+    <Compile Include="ParticleSystem\TileFireParticleSystem.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quests\IQuest.cs" />
+    <Compile Include="Quests\Quest Completed Strategies\IQuestCompletedStrategy.cs" />
+    <Compile Include="Quests\Quest Completed Strategies\ItemRewardStrategy.cs" />
+    <Compile Include="Quests\Quest.cs" />
+    <Compile Include="Quests\QuestFactory.cs" />
+    <Compile Include="Quests\Update Strategies\FindItemStrategy.cs" />
+    <Compile Include="Quests\Update Strategies\IUpdateStrategy.cs" />
+    <Compile Include="Quests\Update Strategies\KillCreatureStrategy.cs" />
+    <Compile Include="Screens\Game Over\GameOverScreen.cs" />
+    <Compile Include="Screens\Gameplay\GameplayScreen.cs" />
+    <Compile Include="Screens\Gameplay\GameState.cs" />
+    <Compile Include="Screens\Gameplay\Inventory.cs" />
+    <Compile Include="Screens\Gameplay\MessageBox.cs" />
+    <Compile Include="Screens\Gameplay\MiniMap.cs" />
+    <Compile Include="Screens\Gameplay\SideBar.cs" />
+    <Compile Include="Screens\Gameplay\SpellBook.cs" />
+    <Compile Include="Screens\IScreen.cs" />
+    <Compile Include="Special Effects\Fireball.cs" />
+    <Compile Include="Special Effects\Heal.cs" />
+    <Compile Include="Special Effects\Inferno.cs" />
+    <Compile Include="Special Effects\ISpecialEffect.cs" />
+    <Compile Include="Terrain\ITerrain.cs" />
+    <Compile Include="Terrain\Terrain.cs" />
+    <Compile Include="Terrain\TerrainFactory.cs" />
+    <Compile Include="Weapons\Attack Strategies\ApplyTemporaryEffectToAttacker.cs" />
+    <Compile Include="Weapons\Attack Strategies\ApplyTemporaryEffectToTarget.cs" />
+    <Compile Include="Weapons\Attack Strategies\IAttackStrategy.cs" />
+    <Compile Include="Weapons\Attack Strategies\PhysicalAttack.cs" />
+    <Compile Include="Weapons\Attack Strategies\ProjectileAttackStrategy.cs" />
+    <Compile Include="Weapons\IWeapon.cs" />
+    <Compile Include="Weapons\Weapon.cs" />
+    <Compile Include="Weapons\WeaponFactory.cs" />
+    <Compile Include="World\AreaOfEffect.cs" />
+    <Compile Include="World\Camera.cs" />
+    <Compile Include="World\Direction.cs" />
+    <Compile Include="World\MovementType.cs" />
+    <Compile Include="World\RandomNumberProvider.cs" />
+    <Compile Include="World\User.cs" />
+    <Compile Include="World\World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Achievements\AchievementMessageBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Achievements\FlowerKiller.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Armor\Armor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Armor\Boots.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Armor\Gloves.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Armor\Helmet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Armor\Shield.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Book.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CaveFloor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\CaveWall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ClosedChest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ClosedDoor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Dragon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\FireSprite.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\GiantBeetle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\GiantSnake.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Golem.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Knight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\ManEatingPlant.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Octopus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Reaper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Thief.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Creatures\Troll.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\explosion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fire.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\FogOfWar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Food\Apple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Food\Mushroom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\GameOverBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\GiantBat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\HumanWarrior.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Key.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Magic\BluePotion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Magic\MagicCircle3x3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Magic\RedPotion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Magic\Scroll.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MessageBoxBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Nothing.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\OpenChest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\OpenDoor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Particle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Remains\BatWing.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Remains\Blood.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Remains\Bones.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Remains\Dust.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Remains\GreenGoo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SelectedTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SideBarBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SkeletonWarrior.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Target.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Terrain\Lava.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Terrain\MiniMapTile.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TestLevel2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Torch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Treasure\Amulet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Treasure\Diamond.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Treasure\Ring.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Vase.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Water.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Arrows.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Axe.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Bow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Club.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Dagger.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\FireSword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\IceSword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Spear.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Staff.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Weapons\Sword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Content\Fonts\AchievementDescription.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Fonts\AchievementHeader.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MessageBoxFont.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallFont.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
