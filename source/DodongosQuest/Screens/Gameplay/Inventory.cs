@@ -33,7 +33,7 @@ namespace DodongosQuest.Screens.Gameplay
 
             for (int i = 0; i < 10; i++)
             {
-                _inventoryPositions[i] = new Vector2(0, (i * dim.Y) + 25);
+                _inventoryPositions[i] = new Vector2(0, (i * dim.Y));
                 if (_height < _inventoryPositions[i].Y)
                 {
                     _height = (int)_inventoryPositions[i].Y;

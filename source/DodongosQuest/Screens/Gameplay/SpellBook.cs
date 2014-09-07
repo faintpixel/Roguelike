@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using DodongosQuest.Items;
 using xnaHelper.Helpers;
 using DodongosQuest.Magic;
+using System.Diagnostics;
 
 namespace DodongosQuest.Screens.Gameplay
 {
@@ -41,27 +42,27 @@ namespace DodongosQuest.Screens.Gameplay
             Vector2 dim = _font.MeasureString("Fark");
             for (int i = 0; i < 10; i++)
             {
-                _spellPositions[i] = new Vector2(0, (i * dim.Y) + 25);
+                _spellPositions[i] = new Vector2(0, (i * dim.Y));
                 if (_height < _spellPositions[i].Y)
                 {
                     _height = (int)_spellPositions[i].Y;
                 }
             }
-
         }
 
-        public string GetSpellAt(Vector2 pos)
+        public int GetSpellAt(Vector2 pos)
         {
             // BROKEN
             Vector2 dim = _font.MeasureString("Fark");
             for (int i = 0; i < _playerSpells.Count; i++)
             {
-                if (pos.Y >= _spellPositions[i].Y && pos.Y <= _spellPositions[i].Y + dim.Y);
+                Vector2 actual = _spellPositions[i] + _position;
+                if ( (pos.Y >= actual.Y) && (pos.Y <= actual.Y + dim.Y ))
                 {
-                    return _keys[i];
+                    return i;
                 }
             }
-            return null;
+            return -1;
         }
 
         public void Draw(GameTime gameTime)

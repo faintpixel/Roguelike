@@ -94,10 +94,11 @@ namespace DodongosQuest.Screens.Gameplay
             else if (_spells.IntersectsWith(new Vector2(state.X, state.Y)))
             {
                 //Announcer.Instance.Announce("Clicked spells.", MessageTypes.Other);
-                string spell = _spells.GetSpellAt(new Vector2(state.X, state.Y));
-                if (spell != null)
+                int spellOffset = _spells.GetSpellAt(new Vector2(state.X, state.Y));
+                if (spellOffset > -1)
                 {
-                    Announcer.Instance.Announce("Clicked spells: " + spell, MessageTypes.Other);
+                    Announcer.Instance.Announce("Clicked spells: " + spellOffset, MessageTypes.Other);
+                    AttemptToUseSpell(spellOffset);
                 }
             }
             else
