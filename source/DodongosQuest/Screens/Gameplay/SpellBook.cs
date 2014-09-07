@@ -36,7 +36,7 @@ namespace DodongosQuest.Screens.Gameplay
             _keys.Add("T");
             _keys.Add("Y");
 
-            _width = 300;
+            _width = 100;
             _height = 0;
             // calc the font height
             Vector2 dim = _font.MeasureString("Fark");
@@ -57,7 +57,7 @@ namespace DodongosQuest.Screens.Gameplay
             for (int i = 0; i < _playerSpells.Count; i++)
             {
                 Vector2 actual = _spellPositions[i] + _position;
-                if ( (pos.Y >= actual.Y) && (pos.Y <= actual.Y + dim.Y ))
+                if ( (pos.X >= _position.X) &&(pos.X <= _position.X + _width ) && (pos.Y >= actual.Y) && (pos.Y <= actual.Y + dim.Y ))
                 {
                     return i;
                 }
