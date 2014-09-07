@@ -256,7 +256,9 @@ namespace DodongosQuest.Screens.Gameplay
         private void HandleUserInputForPlayerTurn(User sender, List<Keys> userInput)
         {
             if (userInput.Contains(Controls.Wait))
+            {
                 _state = GameState.ComputerTurn;
+            }
             else if (userInput.Contains(Controls.MoveLeft))
             {
                 if (_world.MovePlayerInDirectionSuccessful(Direction.West))

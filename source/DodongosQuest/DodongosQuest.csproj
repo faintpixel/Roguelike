@@ -378,6 +378,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Content\arial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Fonts\AchievementDescription.spritefont">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
