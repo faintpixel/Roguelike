@@ -16,6 +16,7 @@ using DodongosQuest.Magic;
 using DodongosQuest.Magic.Cast_Strategies;
 using DodongosQuest.Special_Effects;
 using DodongosQuest.Weapons;
+using Microsoft.Xna.Framework.Input.Touch;
 
 
 namespace DodongosQuest.Screens.Gameplay
@@ -86,6 +87,19 @@ namespace DodongosQuest.Screens.Gameplay
             {
                 Announcer.Instance.Announce("Clicked side bar.", MessageTypes.Other);
             }
+            else if (_inventory.IntersectsWith(new Vector2(state.X, state.Y)))
+            {
+                Announcer.Instance.Announce("Clicked inventory.", MessageTypes.Other);
+            }
+            else if (_spells.IntersectsWith(new Vector2(state.X, state.Y)))
+            {
+                //Announcer.Instance.Announce("Clicked spells.", MessageTypes.Other);
+                string spell = _spells.GetSpellAt(new Vector2(state.X, state.Y));
+                if (spell != null)
+                {
+                    Announcer.Instance.Announce("Clicked spells: " + spell, MessageTypes.Other);
+                }
+            }
             else
             {
                 // clicked the map
@@ -98,6 +112,43 @@ namespace DodongosQuest.Screens.Gameplay
                     {
                         _world.Player.AttackCreature(ref target);
                         _state = GameState.ComputerTurn;
+                    }
+                    else
+                    {
+                        if (_world.PlayerCanSeeWorldIndex(clickedWorldIndex))
+                        {
+                            // a cheese hack toward getting touch sort of working
+                            Vector2 delta = clickedWorldIndex - _world.Player.WorldIndex;
+                            if (delta.X < 0)
+                            {
+                                if (_world.MovePlayerInDirectionSuccessful(Direction.West))
+                                {
+                                    _state = GameState.ComputerTurn;
+                                }
+                            }
+                            if (delta.X > 0)
+                            {
+                                if (_world.MovePlayerInDirectionSuccessful(Direction.East))
+                                {
+                                    _state = GameState.ComputerTurn;
+                                }
+                            }
+                            if (delta.Y < 0)
+                            {
+                                if (_world.MovePlayerInDirectionSuccessful(Direction.North))
+                                {
+                                    _state = GameState.ComputerTurn;
+                                }
+                            }
+                            if (delta.Y > 0)
+                            {
+                                if (_world.MovePlayerInDirectionSuccessful(Direction.South))
+                                {
+                                    _state = GameState.ComputerTurn;
+                                }
+                            }
+                            _world.CenterCameraOnPlayer();
+                        }
                     }
                 }
                 else if (_state == GameState.PlayerTurnSelectingDoorToClose)
