@@ -14,28 +14,28 @@ namespace DodongosQuest.Magic
         {
             AreaOfEffect areaOfEffect = new AreaOfEffect(world);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(0, 0), 1);
-            return new Spell("Heal Self", 2, areaOfEffect, false, world, new HealSelfStrategy(5, 20));
+            return new Spell("Heal Self", 2, areaOfEffect, false, world, new HealSelfStrategy(5, 20), false);
         }
 
         public static ISpell CreateTeleportSpell(World world)
         {
             AreaOfEffect areaOfEffect = new AreaOfEffect(world);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(0, 0), 1);
-            return new Spell("Teleport", 2, areaOfEffect, true, world, new TeleportStrategy());
+            return new Spell("Teleport", 2, areaOfEffect, true, world, new TeleportStrategy(), false);
         }
 
         public static ISpell CreateFireboltSpell(World world)
         {
             AreaOfEffect areaOfEffect = new AreaOfEffect(world);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(0, 0), 1);
-            return new Spell("Firebolt", 5, areaOfEffect, true, world, new FireballStrategy(2, 8));
+            return new Spell("Firebolt", 5, areaOfEffect, true, world, new FireballStrategy(2, 8), false);
         }
 
         public static ISpell CreateFireballSpell(World world)
         {
             AreaOfEffect areaOfEffect = new AreaOfEffect(world);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(0, 0), 1);
-            return new Spell("Fireball", 5, areaOfEffect, true, world, new FireballStrategy(10, 25));
+            return new Spell("Fireball", 5, areaOfEffect, true, world, new FireballStrategy(10, 25), false);
         }
 
         public static ISpell CreateFlameSpell(World world)
@@ -48,7 +48,7 @@ namespace DodongosQuest.Magic
             areaOfEffect.affectedBaseIndices.Add(new Vector2(-2, 0), 0.75);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(-3, 0), 0.5);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(-3, -1), 0.25);
-            return new Spell("Flame", 5, areaOfEffect, false, world, new FireballStrategy(10, 25));
+            return new Spell("Flame", 5, areaOfEffect, false, world, new FireballStrategy(10, 25), false);
         }
 
         public static ISpell CreateInfernoSpell(World world)
@@ -59,7 +59,7 @@ namespace DodongosQuest.Magic
             areaOfEffect.affectedBaseIndices.Add(new Vector2(-1, 1), 1);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(1, -1), 1);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(1, 1), 1);
-            return new Spell("Inferno", 5, areaOfEffect, true, world, new InfernoStrategy(10, 25));
+            return new Spell("Inferno", 5, areaOfEffect, true, world, new InfernoStrategy(10, 25), false);
         }
 
         public static ISpell CreateHasteSpell(World world)
@@ -71,7 +71,6 @@ namespace DodongosQuest.Magic
 
         public static ISpell CreateFirewallSpell(World world)
         {
-            // should create a line of fire. User should be able to rotate it to be horizontal/vertical
             // fire should burn anything on it right away, and any creatures that walk into should be burnt as they enter.
 
             AreaOfEffect areaOfEffect = new AreaOfEffect(world);
@@ -82,7 +81,7 @@ namespace DodongosQuest.Magic
             areaOfEffect.affectedBaseIndices.Add(new Vector2(2, 0), 1);
             areaOfEffect.affectedBaseIndices.Add(new Vector2(3, 0), 1);
  
-            return new Spell("Firewall", 5, areaOfEffect, true, world, new FireballStrategy(10, 25));
+            return new Spell("Firewall", 5, areaOfEffect, true, world, new FireballStrategy(10, 25), true);
         }
 
         public static ISpell CreateBarrierSpell(World world)

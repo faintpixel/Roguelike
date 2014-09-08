@@ -34,6 +34,7 @@ namespace DodongosQuest
         public static readonly Keys UseSpell3 = Keys.R;
         public static readonly Keys UseSpell4 = Keys.T;
         public static readonly Keys UseSpell5 = Keys.Y;
+        public static readonly Keys RotateSpell = Keys.M;
         public static readonly Keys CastSpellOrAttackTarget = Keys.Space;
         public static readonly Keys SelectNextTarget = Keys.PageUp;
         public static readonly Keys SelectPreviousTarget = Keys.PageDown;

@@ -48,7 +48,8 @@ namespace DodongosQuest
             _keysOfInterest.Add(Controls.Fire);
             _keysOfInterest.Add(Controls.CastSpellOrAttackTarget);
             _keysOfInterest.Add(Controls.SelectNextTarget);
-            _keysOfInterest.Add(Controls.SelectPreviousTarget); 
+            _keysOfInterest.Add(Controls.SelectPreviousTarget);
+            _keysOfInterest.Add(Controls.RotateSpell);
 
             _keyRepeatTime = new TimeSpan(0, 0, 0, 0, 175);
             _heldKeys = new Dictionary<Keys, TimeSpan>();

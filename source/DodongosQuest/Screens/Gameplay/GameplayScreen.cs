@@ -300,6 +300,8 @@ namespace DodongosQuest.Screens.Gameplay
                 _selectedSpell.AffectedArea.DirectionFacing = Direction.North;
             else if (userInput.Contains(Controls.MoveDown))
                 _selectedSpell.AffectedArea.DirectionFacing = Direction.South;
+            else if (userInput.Contains(Controls.RotateSpell))
+                AttemptToRotateSpell();
             else if (userInput.Contains(Controls.CastSpellOrAttackTarget))
             {
                 if (MouseIsOnWorld())
@@ -498,6 +500,12 @@ namespace DodongosQuest.Screens.Gameplay
                 Announcer.Instance.Announce("Select target for " + _selectedSpell.Name + ".", MessageTypes.Other);
                 _state = GameState.PlayerTurnSelectingTargetForSpell;
             }
+        }
+
+        private void AttemptToRotateSpell()
+        {
+            if (_state == GameState.PlayerTurnSelectingTargetForSpell)
+                _selectedSpell.Rotate();
         }
 
         private void DoneDisplayingAchievement(AchievementNotifier sender)

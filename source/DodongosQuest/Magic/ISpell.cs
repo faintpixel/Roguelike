@@ -13,6 +13,8 @@ namespace DodongosQuest.Magic
         string Name { get; }
         AreaOfEffect AffectedArea { get; }
         bool TargetCanMove { get; }
+        bool AllowRotation { get; }
         bool CastSpell(ICreature caster, Vector2 targetWorldIndex);
+        void Rotate();
     }
 }

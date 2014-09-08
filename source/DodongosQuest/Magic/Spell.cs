@@ -15,11 +15,12 @@ namespace DodongosQuest.Magic
         public string Name { get; set; }
         public AreaOfEffect AffectedArea { get; set; }
         public bool TargetCanMove { get; set; }
+        public bool AllowRotation { get; set; }
 
         private ICastStrategy _castStrategy;
         private World _world;
 
-        public Spell(string name, int manaCost, AreaOfEffect affectedArea, bool targetCanMove, World world, ICastStrategy castStrategy)
+        public Spell(string name, int manaCost, AreaOfEffect affectedArea, bool targetCanMove, World world, ICastStrategy castStrategy, bool allowRotation)
         {
             Name = name;
             ManaCost = manaCost;
@@ -27,6 +28,7 @@ namespace DodongosQuest.Magic
             _castStrategy = castStrategy;
             TargetCanMove = targetCanMove;
             AffectedArea = affectedArea;
+            AllowRotation = allowRotation;
         }
 
         public bool CastSpell(ICreature caster, Vector2 targetWorldIndex)
@@ -41,6 +43,18 @@ namespace DodongosQuest.Magic
                 Announcer.Instance.Announce(caster.Name + " casts " + Name + ".", MessageTypes.Spell);
                 caster.Mana.Current -= ManaCost;
                 return _castStrategy.CastSpell(caster, targetWorldIndex, AffectedArea, _world);
+            }
+        }
+
+        public void Rotate()
+        {
+            if (AllowRotation)
+            {
+                Dictionary<Vector2, double> newBaseIndices = new Dictionary<Vector2, double>();
+                foreach (KeyValuePair<Vector2, double> index in AffectedArea.affectedBaseIndices)
+                    newBaseIndices.Add(new Vector2(index.Key.Y, index.Key.X), index.Value);
+
+                AffectedArea.affectedBaseIndices = newBaseIndices;
             }
         }
     }
