@@ -48,26 +48,8 @@ namespace DodongosQuest
                 baseXTouse = baseIndex.Y;
                 baseYToUse = baseIndex.X * -1;
             }
-
-            //else if (DirectionFacing == Direction.North)
-            //    return new Vector2(leftFacing.Y, leftFacing.X);
-            //else if (DirectionFacing == Direction.South)
-            //    return new Vector2(leftFacing.Y * -1, leftFacing.X * -1);
- 
                 
             return new Vector2(targetIndex.X + baseXTouse, targetIndex.Y + baseYToUse);  
-
-            //Vector2 leftFacing = new Vector2(targetIndex.X + baseIndex.X, targetIndex.Y + baseIndex.Y);
-            //if (DirectionFacing == Direction.West)
-            //    return leftFacing;
-            //else if (DirectionFacing == Direction.East)
-            //    return new Vector2(leftFacing.X * -1, leftFacing.Y);
-            //else if (DirectionFacing == Direction.North)
-            //    return new Vector2(leftFacing.Y, leftFacing.X);
-            //else if (DirectionFacing == Direction.South)
-            //    return new Vector2(leftFacing.Y * -1, leftFacing.X * -1);
-            //else
-            //    return leftFacing;  
         }
 
         public Dictionary<Vector2, double> GetAffectedWorldIndices(Vector2 targetIndex)

@@ -42,9 +42,9 @@ namespace DodongosQuest.Achievements
             _imagePosition = new Vector2(position.X + 6, position.Y + 6);
             _namePosition = new Vector2(position.X + 56, position.Y + 18);
             _descriptionPosition = new Vector2(position.X + 56, position.Y + 36);
-            _nameFont = ContentHelper.Content.Load<SpriteFont>(@"Fonts\AchievementHeader");
-            _descriptionFont = ContentHelper.Content.Load<SpriteFont>(@"Fonts\AchievementDescription");
-            _headerFont = ContentHelper.Content.Load<SpriteFont>(@"Fonts\AchievementDescription");
+            _nameFont = ContentHelper.Content.Load<SpriteFont>("arial");
+            _descriptionFont = ContentHelper.Content.Load<SpriteFont>("arial");
+            _headerFont = ContentHelper.Content.Load<SpriteFont>("arial");
         }
 
         public void Draw(GameTime gameTime)
