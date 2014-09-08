@@ -105,6 +105,11 @@
     <Compile Include="Magic\ISpell.cs" />
     <Compile Include="Magic\Spell.cs" />
     <Compile Include="Magic\SpellFactory.cs" />
+    <Compile Include="Maps\IMap.cs" />
+    <Compile Include="Maps\Map Types\BigRoom.cs" />
+    <Compile Include="Maps\Map Types\Caves.cs" />
+    <Compile Include="Maps\Map Types\FromImage.cs" />
+    <Compile Include="Maps\MapFactory.cs" />
     <Compile Include="ParticleSystem\FireBallParticleSystem.cs" />
     <Compile Include="ParticleSystem\HealParticleSystem.cs" />
     <Compile Include="ParticleSystem\Particle.cs" />
