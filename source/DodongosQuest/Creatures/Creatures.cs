@@ -13,6 +13,7 @@ namespace DodongosQuest.Creatures
         Golem = 4,
         ManEatingPlant = 5,
         WalkingDragon = 6,
-        FireSpirit = 7
+        FireSpirit = 7,
+        Hobo = 10
     }
 }

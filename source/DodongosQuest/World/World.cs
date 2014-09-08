@@ -5,6 +5,7 @@ using System.Text;
 using DodongosQuest.Creatures;
 using DodongosQuest.Creatures.Player;
 using DodongosQuest.Terrain;
+using DodongosQuest.Maps;
 using DodongosQuest.Items;
 using DodongosQuest.Containers;
 using DodongosQuest.Announcements;
@@ -32,10 +33,12 @@ namespace DodongosQuest
         private List<ISpecialEffect> _specialEffects;
         public ITerrain[,] Tiles { get; set; }
         private List<Fire> _fire;
+        public int _level;
 
-        private const int WORLD_WIDTH = 100;
-        private const int WORLD_HEIGHT = 100;
+        public const int WORLD_WIDTH = 100;
+        public const int WORLD_HEIGHT = 100;
         public const int TILE_SIZE = 25;
+
 
         public event AchievementEvent AchievementUnlocked;
         public delegate void AchievementEvent(AchievementNotifier achievement);
@@ -49,8 +52,9 @@ namespace DodongosQuest
             _fire = new List<Fire>();
             _remains = new List<IRemains>();
             _specialEffects = new List<ISpecialEffect>();
+            _level = 1;
 
-            SetMap(@"Content\TestLevel2.png");                      
+            MapFactory.CreateMap(this); 
 
             Player = new PlayerCharacter(new Vector2(47, 25), this);
             CenterCameraOnPlayer();
@@ -60,7 +64,7 @@ namespace DodongosQuest
         }
 
         private void TEST_addStuffToWorld()
-        {           
+        {
             ICreature bat = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.GiantBat, new Vector2(9, 94), this);
             bat.Death += new CreatureEvent(HandleCreatureDeath);
             _creatures.Add(bat);
@@ -142,17 +146,17 @@ namespace DodongosQuest
             skeleton.Death += new CreatureEvent(HandleCreatureDeath);
             _creatures.Add(skeleton);
 
-            ICreature octopus = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.Octopus, new Vector2(11, 87), this);
-            octopus.Death += new CreatureEvent(HandleCreatureDeath);
-            _creatures.Add(octopus);
+            //ICreature octopus = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.Octopus, new Vector2(11, 87), this);
+            //octopus.Death += new CreatureEvent(HandleCreatureDeath);
+            //_creatures.Add(octopus);
 
-            octopus = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.Octopus, new Vector2(14, 94), this);
-            octopus.Death += new CreatureEvent(HandleCreatureDeath);
-            _creatures.Add(octopus);
+            //octopus = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.Octopus, new Vector2(14, 94), this);
+            //octopus.Death += new CreatureEvent(HandleCreatureDeath);
+            //_creatures.Add(octopus);
 
-            octopus = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.Octopus, new Vector2(65, 22), this);
-            octopus.Death += new CreatureEvent(HandleCreatureDeath);
-            _creatures.Add(octopus);
+            //octopus = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.Octopus, new Vector2(65, 22), this);
+            //octopus.Death += new CreatureEvent(HandleCreatureDeath);
+            //_creatures.Add(octopus);
 
             ICreature walkingDragon = CreatureFactory.CreateCreature(DodongosQuest.Creatures.Creatures.WalkingDragon, new Vector2(15, 92), this);
             walkingDragon.Death += new CreatureEvent(HandleCreatureDeath);
@@ -209,7 +213,7 @@ namespace DodongosQuest
 
             chest = new TreasureChest(new List<IItem>(), false, new Vector2(6, 94), this);
             chest.Contents.Add(ItemFactory.CreateItem(DodongosQuest.Items.ItemTypes.Diamond, new Vector2(6, 94), this));
-            _containers.Add(chest);            
+            _containers.Add(chest);
 
             _doors.Add(new Door(new Vector2(55, 34), false, this));
             _doors.Add(new Door(new Vector2(62, 33), false, this));
@@ -561,39 +565,7 @@ namespace DodongosQuest
             return new Vector2(WORLD_WIDTH * TILE_SIZE, WORLD_HEIGHT * TILE_SIZE);
         }
 
-        public void SetMap(string mapFile)
-        {
-            Bitmap mapImage = (Bitmap)Bitmap.FromFile(mapFile);
-
-            Tiles = new ITerrain[WORLD_WIDTH, WORLD_HEIGHT];
-
-            for (int x = 0; x < WORLD_WIDTH; x++)
-                for (int y = 0; y < WORLD_HEIGHT; y++)
-                {
-                    Vector2 worldIndex = new Vector2(x, y);
-
-                    if (mapImage.GetPixel(x, y).Name == "ff6a4e2f")
-                    {
-                        Tiles[x, y] = TerrainFactory.CreateCaveFloor(worldIndex, this);
-                    }
-                    else if (mapImage.GetPixel(x, y).Name == "ff8c8c8c")
-                    {
-                        Tiles[x, y] = TerrainFactory.CreateCaveWall(worldIndex, this); 
-                    }
-                    else if (mapImage.GetPixel(x, y).Name == "ff000000")
-                    {
-                        Tiles[x, y] = TerrainFactory.CreateNothing(worldIndex, this);
-                    }
-                    else if (mapImage.GetPixel(x, y).Name == "ff0000ff")
-                    {
-                        Tiles[x, y] = TerrainFactory.CreateWater(worldIndex, this);
-                    }
-                    else
-                    {
-                        Console.WriteLine("ERROR: Unknown terrain type");
-                    }
-                }
-        }
+        
 
         public List<ICreature> GetCreaturesWithinVisibleDistanceOfPlayer(int range)
         {
